@@ -1,0 +1,68 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "TV Picture Mode",
+        "description": "Switches the TV's Picture Mode (Vivid/Movie) via its own on-screen quick-toggle, and tracks the live Picture Mode — including changes made with the physical remote — via a permanent logcat connection to the TV.",
+        "data": {
+          "media_player_entity_id": "TV (media_player entity)",
+          "host": "TV IP address",
+          "port": "ADB port",
+          "adbkey_path": "ADB key file path"
+        },
+        "data_description": {
+          "media_player_entity_id": "The same adb-capable media_player entity already used for adb commands on this TV.",
+          "host": "The TV's IP address on your network, e.g. 192.168.1.50 — needed because this integration opens its own direct connection to the TV to stream its log, instead of going through the androidtv integration.",
+          "port": "The TV's ADB port. Almost always 5555, the same one already used to control it.",
+          "adbkey_path": "Defaults to the same ADB key the androidtv integration already uses and has authorized on this TV — leave as-is unless you have a reason to use a different one."
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This TV is already configured."
+    }
+  },
+  "services": {
+    "set_mode": {
+      "name": "Set TV picture mode",
+      "description": "Switches the target TV's Picture Mode to Vivid or Movie, using the TV's own on-screen quick-toggle. The menu flashes on screen for roughly a second while this runs.",
+      "fields": {
+        "mode": {
+          "name": "Mode",
+          "description": "Which Picture Mode to switch to."
+        }
+      }
+    },
+    "refresh": {
+      "name": "Refresh TV picture mode",
+      "description": "Forces an immediate read of the TV's current Picture Mode without changing it — useful right after Home Assistant restarts. Not needed otherwise: the sensor updates on its own, live, from the TV's own log, including changes made with the physical remote."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "picture_mode": {
+        "name": "Picture mode",
+        "state": {
+          "vivid": "Vivid",
+          "standard": "Standard",
+          "sport": "Sport",
+          "movie": "Movie",
+          "smart": "Smart",
+          "unknown": "Unknown"
+        }
+      }
+    },
+    "select": {
+      "picture_mode": {
+        "name": "Picture mode",
+        "state": {
+          "vivid": "Vivid",
+          "standard": "Standard",
+          "sport": "Sport",
+          "movie": "Movie",
+          "smart": "Smart"
+        }
+      }
+    }
+  }
+}

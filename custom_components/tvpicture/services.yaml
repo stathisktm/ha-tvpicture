@@ -1,0 +1,32 @@
+set_mode:
+  name: Set TV picture mode
+  description: >-
+    Switches the target TV's Picture Mode directly, in one call, through the TV settings app's own
+    voice-assistant hook — no menu navigation or key presses. A small confirmation flashes for
+    a fraction of a second. Also updates this integration's sensor/select.
+  target:
+    entity:
+      domain: media_player
+  fields:
+    mode:
+      name: Mode
+      description: Which Picture Mode to switch to.
+      required: true
+      selector:
+        select:
+          options:
+            - vivid
+            - standard
+            - sport
+            - movie
+            - smart
+
+refresh:
+  name: Refresh TV picture mode
+  description: >-
+    Reads back the TV's current Picture Mode without changing it, and updates this integration's
+    sensor. A small confirmation flashes for a fraction of a second — call this only when an
+    up-to-date value is actually needed, not on a timer.
+  target:
+    entity:
+      domain: media_player
