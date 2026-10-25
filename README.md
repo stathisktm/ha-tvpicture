@@ -30,5 +30,9 @@ data:
 
 Δοκιμασμένο σε TCL Google TV (Android 12, TvSettings 3.30.02).
 
+## Δείτε επίσης
+- [ha-tvcam](https://github.com/stathisktm/ha-tvcam): κάμερα, μηνύματα και κινούμενα εικονίδια πάνω στην εικόνα της TV
+- [ha-tvchannel](https://github.com/stathisktm/ha-tvchannel): ποιο κανάλι και πρόγραμμα παίζει τώρα
+
 ## Άδεια
 [MIT](LICENSE)
